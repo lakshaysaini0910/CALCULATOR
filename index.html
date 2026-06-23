@@ -7,125 +7,170 @@
     <title>Modern Calculator</title>
     <style>
         :root {
-            --primary: #3a4750;
-            --secondary: #2a3439;
-            --accent: #00a8cc;
-            --text: #ecf0f1;
-            --display-bg: #1a252f;
-            --button-hover: #3d566e;
-            --equals-hover: #2980b9;
-        }
+    --primary: #3a4750;
+    --secondary: #2a3439;
+    --accent: #00a8cc;
+    --text: #ecf0f1;
+    --display-bg: #1a252f;
+    --button-hover: #3d566e;
+    --equals-hover: #2980b9;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-        body {
-            background-color: #000000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
 
-        .calculator {
-            width: 100%;
-            max-width: 600px;
-            background-color: var(--primary);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            border: 2px solid rgba(15, 10, 10, 0.1);
-        }
+.calculator {
+    width: min(95vw, 600px);
+    background-color: var(--primary);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    overflow: hidden;
+}
 
-        .display {
-            padding: 35px;
-            background-color: #1d1f21;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            color: var(--text);
-            text-align: right;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+.display {
+    padding: 30px;
+    background-color: #1d1f21;
+    color: var(--text);
+    text-align: right;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-        .previous-operand {
-            font-size: 2.5rem;
-            opacity: 0.7;
-            min-height: 24px;
-            word-break: break-all;
-        }
+.previous-operand {
+    font-size: 2rem;
+    opacity: .7;
+    word-break: break-all;
+}
 
-        .current-operand {
-            font-size: 4.2rem;
-            font-weight: 300;
-            word-break: break-all;
-        }
+.current-operand {
+    font-size: 3.5rem;
+    font-weight: 300;
+    word-break: break-all;
+}
 
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-            padding: 5px;
-            background-color: rgb(32, 31, 33);
-            
-        }
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    padding: 5px;
+    background-color: rgb(32,31,33);
+}
 
-        button {
-            border: none;
-            outline: none;
-            padding: 30px;
-            font-size: 2.7rem;
-            border-radius: 8px;
-            background-color: rgb(45, 49, 48);
-            color: rgb(255, 255, 255);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+button {
+    border: none;
+    padding: 25px;
+    font-size: 2rem;
+    border-radius: 8px;
+    background-color: rgb(45,49,48);
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+}
 
-        button:hover {
-            background-color: var(--button-hover);
-        }
+button:hover {
+    background-color: var(--button-hover);
+}
 
-        .operator {
-            background-color: rgb(54, 54, 103);
-        }
+button:active {
+    transform: scale(.95);
+}
 
-        .operator:hover {
-            background-color: var(--equals-hover);
-        }
+.operator {
+    background-color: rgb(54,54,103);
+}
 
-        .span-2 {
-            grid-column: span 2;
-        }
+.operator:hover {
+    background-color: var(--equals-hover);
+}
 
-        /* Animation for button press */
-        button:active {
-            transform: scale(0.95);
-        }
+.span-2 {
+    grid-column: span 2;
+}
 
-        /* Responsive adjustments */
-        @media (max-width: 350px) {
-            button {
-                padding: 18px;
-                font-size: 1.3rem;
-            }
-            
-            .display {
-                min-height: 120px;
-            }
-            
-            .current-operand {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+/* Laptop */
+@media (max-width: 1024px) {
+    .calculator {
+        width: min(95vw, 500px);
+    }
+
+    button {
+        padding: 22px;
+        font-size: 1.8rem;
+    }
+
+    .current-operand {
+        font-size: 3rem;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    button {
+        padding: 18px;
+        font-size: 1.5rem;
+    }
+
+    .display {
+        padding: 20px;
+        min-height: 140px;
+    }
+
+    .current-operand {
+        font-size: 2.5rem;
+    }
+
+    .previous-operand {
+        font-size: 1.3rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    button {
+        padding: 14px;
+        font-size: 1.2rem;
+    }
+
+    .display {
+        padding: 15px;
+        min-height: 110px;
+    }
+
+    .current-operand {
+        font-size: 2rem;
+    }
+
+    .previous-operand {
+        font-size: 1rem;
+    }
+}
+
+/* Tiny phones */
+@media (max-width: 320px) {
+    button {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .current-operand {
+        font-size: 1.6rem;
+    }
+}    </style>
 </head>
 <body>
     <div class="calculator">
